@@ -1,0 +1,14 @@
+version: '2'
+services:
+  elasticsearch:
+    image: elasticsearch:latest
+  logstash:
+    image: logstash:latest
+    links: 
+     - elasticsearch
+    volumes:
+     - ./config/logstash:/config-dir
+  kibana:
+    image: kibana:latest
+    links:
+     - elasticsearch
