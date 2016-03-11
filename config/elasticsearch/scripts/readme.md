@@ -1,0 +1,1 @@
+Z nejakyho pitomyho duvodu musi tento adresar existovat

@@ -16,4 +16,5 @@ if [ $container_id ]; then
 fi
 
 docker run -d --restart=always --name ${container_name} -v "$(pwd)/config/elasticsearch/":/usr/share/elasticsearch/config elasticsearch
+# docker run -it --name ${container_name} -v "$(pwd)/config/elasticsearch/":/usr/share/elasticsearch/config elasticsearch
 # docker logs elasticsearch
