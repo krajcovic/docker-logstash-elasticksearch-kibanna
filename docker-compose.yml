@@ -2,13 +2,24 @@ version: '2'
 services:
   elasticsearch:
     image: elasticsearch:latest
+    volumes:
+      - $(pwd)/config/elasticsearch/:/usr/share/elasticsearch/config
+    # restart: always
   logstash:
     image: logstash:latest
+    ports:
+      - 4560:4560
     links: 
      - elasticsearch
     volumes:
-     - ./config/logstash:/config-dir
+     - $(pwd)/config/logstash":/config-dir
+    entrypoint: logstash -f /config-dir/logstash.conf
+    # restart: always
   kibana:
     image: kibana:latest
+    ports: 
+     - 5601:5601
     links:
      - elasticsearch
+    # restart: always
+
